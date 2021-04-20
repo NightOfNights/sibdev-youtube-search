@@ -1,0 +1,16 @@
+.authorization-page {
+  display: grid;
+  flex-direction: column;
+  gap: 20px;
+
+  &__logo {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}

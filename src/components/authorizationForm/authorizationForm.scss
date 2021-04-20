@@ -1,0 +1,23 @@
+.authorization-form {
+  &__item > div {
+    padding-bottom: 0 !important;
+  }
+
+  &__item > div label::before {
+    content: '' !important;
+  }
+
+  &__input-label {
+    font-size: 1rem !important;
+    line-height: 1.375rem;
+    color: var(--light-gray);
+  }
+
+  &__input {
+    border-radius: 5px !important;
+  }
+
+  &__submit-btn {
+    border-radius: 5px !important;
+  }
+}
