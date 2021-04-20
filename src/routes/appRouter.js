@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './privateRoute';
-import { TestPage, AuthorizationPage } from '../pages';
+import SearchRouter from './searchRouter';
+import { AuthorizationPage } from '../pages';
 import users from '../data/users';
 
 const AppRouter = () => {
@@ -37,7 +38,7 @@ const AppRouter = () => {
       <PrivateRoute
         path="/search"
         isAuthorized={userToken !== ''}
-        component={TestPage}
+        component={SearchRouter}
       />
       <Redirect to="/search" />
     </Switch>
