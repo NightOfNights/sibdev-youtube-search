@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  &__logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__item {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 2vh 2vw;
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  &__item:hover {
+    color: var(--primary-color);
+    margin-bottom: -2px;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  &__item:last-child {
+    margin-left: auto;
+  }
+}
