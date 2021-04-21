@@ -1,19 +1,17 @@
 import React from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import { Input } from 'antd';
 import { SearchLayout } from '../../layouts';
+import { SearchInput } from '../../components';
 import './searchPage.scss';
-
-const { Search } = Input;
 
 const SearchPage = () => {
   const history = useHistory();
   const { path } = useRouteMatch();
 
-  const handleSearch = (searchText) => {
-    if (searchText) {
+  const handleSearch = (searchQuery) => {
+    if (searchQuery) {
       const params = new URLSearchParams();
-      params.append('query', searchText);
+      params.append('query', searchQuery);
       history.push({
         pathname: `${path}/result`,
         search: params.toString(),
@@ -27,7 +25,7 @@ const SearchPage = () => {
     <SearchLayout>
       <div className="search-page">
         <div className="search-page__header">Поиск видео</div>
-        <Search
+        <SearchInput
           placeholder="Что хотите посмотреть?"
           enterButton="Найти"
           size="large"
