@@ -8,8 +8,8 @@ const SearchRouter = () => {
   return (
     <Switch>
       <Route exact path={path} component={SearchPage} />
-      <Route exact path={`${path}/favourites`} component={FavouritesPage} />
-      <Route exact path={`${path}/result`} component={SearchResultPage} />
+      <Route path={`${path}/favourites`} component={FavouritesPage} />
+      <Route path={`${path}/result`} component={SearchResultPage} />
       <Redirect to="/search" />
     </Switch>
   );
