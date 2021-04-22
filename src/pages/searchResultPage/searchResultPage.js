@@ -1,26 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { SearchResultLayout } from '../../layouts';
 import { SearchInput } from '../../components';
-import { HeartOutlined } from '@ant-design/icons';
+import { getYoutubeVideoList } from '../../store/searchResultPage/actions';
+import { Spin } from 'antd';
+import { HeartOutlined, LoadingOutlined } from '@ant-design/icons';
 import './searchResultPage.scss';
 
 const SearchResultPage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const searchQuery = Object.fromEntries(
     new URL(document.location).searchParams
   ).query;
 
-  const handleFavouriteClick = () => {
-    console.log('favourite clicked');
+  const searchParams = {
+    part: 'snippet',
+    type: 'video',
+    q: searchQuery,
+    maxResults: 13,
+    key: 'AIzaSyBwVN7mJY92b4pdKSwNNDfJbCBkJtrGQ-Q',
   };
 
-  const favouriteIcon = (
-    <HeartOutlined
-      className="search-result-page__favorite-icon"
-      onClick={handleFavouriteClick}
-    />
+  useEffect(() => {
+    console.log('render');
+    dispatch(getYoutubeVideoList(searchParams));
+  }, [searchQuery]);
+
+  const youtubeVideoListLoading = useSelector(
+    (state) => state.searchResultPageReducer.loading
   );
 
   const handleSearch = (searchText) => {
@@ -35,6 +45,21 @@ const SearchResultPage = () => {
     }
   };
 
+  const handleFavouriteClick = () => {
+    console.log('favourite clicked');
+  };
+
+  const favouriteIcon = (
+    <HeartOutlined
+      className="search-result-page__favorite-icon"
+      onClick={handleFavouriteClick}
+    />
+  );
+
+  const loadingIcon = (
+    <LoadingOutlined className="search-result-page__loading-icon" spin />
+  );
+
   return (
     <SearchResultLayout>
       <div className="search-result-page">
@@ -44,8 +69,16 @@ const SearchResultPage = () => {
           size="large"
           suffix={favouriteIcon}
           onSearch={handleSearch}
-          className="search-result__input"
+          className="search-result-page__input"
         />
+        {youtubeVideoListLoading ? (
+          <Spin
+            indicator={loadingIcon}
+            className="search-result-page__loading-spin"
+          />
+        ) : (
+          <div>VideoList</div>
+        )}
       </div>
     </SearchResultLayout>
   );
