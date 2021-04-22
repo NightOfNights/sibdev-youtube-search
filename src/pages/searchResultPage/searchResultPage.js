@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { SearchResultLayout } from '../../layouts';
-import { SearchInput, VideoList } from '../../components';
+import { SearchInput, VideoList, FavouriteModal } from '../../components';
 import { getYoutubeVideoList } from '../../store/searchResultPage/actions';
-import { Spin } from 'antd';
+import { Spin, Popover } from 'antd';
 import { HeartOutlined, LoadingOutlined } from '@ant-design/icons';
 import './searchResultPage.scss';
 
 const SearchResultPage = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isPopoverVisible, setIsPopoverVisible] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -20,7 +22,7 @@ const SearchResultPage = () => {
     part: 'snippet',
     type: 'video',
     q: searchQuery,
-    maxResults: 13,
+    maxResults: 25,
     key: 'AIzaSyBwVN7mJY92b4pdKSwNNDfJbCBkJtrGQ-Q',
   };
 
@@ -55,13 +57,47 @@ const SearchResultPage = () => {
 
   const handleFavouriteClick = () => {
     console.log('favourite clicked');
+    setIsModalVisible(true);
   };
 
+  const handleClickOk = () => {
+    setIsModalVisible(false);
+    setIsPopoverVisible(true);
+  };
+
+  const handleClickCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleVisibleChange = (isVisible) => {
+    setIsPopoverVisible(isVisible);
+  };
+
+  const popOverContent = (
+    <div className="pop-over__content">
+      <div className="pop-over__notification">
+        Поиск сохранен в разделе «Избранное»
+      </div>
+      <Link to="/search/favourites" className="pop-over__favourites-link">
+        Перейти в избранное
+      </Link>
+    </div>
+  );
+
   const favouriteIcon = (
-    <HeartOutlined
-      className="search-result-page__favorite-icon"
-      onClick={handleFavouriteClick}
-    />
+    <Popover
+      placement="bottom"
+      content={popOverContent}
+      trigger="click"
+      visible={isPopoverVisible}
+      onVisibleChange={isPopoverVisible ? handleVisibleChange : null}
+      className="pop-over"
+    >
+      <HeartOutlined
+        onClick={handleFavouriteClick}
+        className="pop-over__favourite-icon"
+      />
+    </Popover>
   );
 
   const loadingIcon = (
@@ -91,6 +127,12 @@ const SearchResultPage = () => {
             videos={youtubeVideoList}
           />
         )}
+        <FavouriteModal
+          isModalVisible={isModalVisible}
+          handleClickOk={handleClickOk}
+          handleClickCancel={handleClickCancel}
+          searchQuery={searchQuery}
+        />
       </div>
     </SearchResultLayout>
   );

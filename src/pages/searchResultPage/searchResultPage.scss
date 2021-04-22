@@ -8,18 +8,24 @@
     margin-bottom: 1vh;
   }
 
-  &__favorite-icon {
-    font-size: 1.1rem;
-    color: var(--primary-color) !important;
-  }
-
   &__loading-icon {
-    font-size: 60px !important;
+    font-size: 40px !important;
   }
 
   &__loading-spin {
     margin-top: 20vh !important;
     width: 100%;
     margin: auto;
+  }
+}
+
+.pop-over {
+  &__favourite-icon {
+    font-size: 1.1rem;
+    color: var(--primary-color) !important;
+  }
+
+  &__notification {
+    margin-bottom: 15px;
   }
 }

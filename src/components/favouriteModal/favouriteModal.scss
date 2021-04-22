@@ -1,0 +1,32 @@
+.favourite-modal {
+  & > div {
+    border-radius: 5px;
+  }
+
+  &__header {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  &__form-item {
+    margin: 0 0 10px;
+  }
+
+  &__form-item > * {
+    padding: 0 !important;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  &__footer > button {
+    width: 100%;
+    border-radius: 2px;
+  }
+}
