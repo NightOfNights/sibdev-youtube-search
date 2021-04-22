@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input } from 'antd';
 import PropTypes from 'prop-types';
+import './searchInput.scss';
 
 const { Search } = Input;
 
@@ -24,6 +25,7 @@ const SearchInput = ({
       suffix={suffix}
       size={size}
       onSearch={handleSearch}
+      className="search-input"
     />
   );
 };
