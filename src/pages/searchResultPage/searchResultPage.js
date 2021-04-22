@@ -13,12 +13,12 @@ const SearchResultPage = () => {
   ).query;
 
   const handleFavouriteClick = () => {
-    console.log('favourite added');
+    console.log('favourite clicked');
   };
 
   const favouriteIcon = (
     <HeartOutlined
-      className="search-result__favorite-icon"
+      className="search-result-page__favorite-icon"
       onClick={handleFavouriteClick}
     />
   );
