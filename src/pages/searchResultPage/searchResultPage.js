@@ -40,9 +40,7 @@ const SearchResultPage = () => {
       <div className="search-result-page">
         <div className="search-result-page__header">Поиск видео</div>
         <SearchInput
-          placeholder="Что хотите посмотреть?"
           defaultValue={searchQuery}
-          enterButton="Найти"
           size="large"
           suffix={favouriteIcon}
           onSearch={handleSearch}

@@ -26,8 +26,6 @@ const SearchPage = () => {
       <div className="search-page">
         <div className="search-page__header">Поиск видео</div>
         <SearchInput
-          placeholder="Что хотите посмотреть?"
-          enterButton="Найти"
           size="large"
           onSearch={handleSearch}
           className="search-page__input"

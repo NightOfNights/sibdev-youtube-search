@@ -5,23 +5,16 @@ import './searchInput.scss';
 
 const { Search } = Input;
 
-const SearchInput = ({
-  placeholder,
-  defaultValue,
-  enterButton,
-  suffix,
-  size,
-  onSearch,
-}) => {
+const SearchInput = ({ defaultValue, suffix, size, onSearch }) => {
   const handleSearch = (searchQuery) => {
     onSearch(searchQuery);
   };
 
   return (
     <Search
-      placeholder={placeholder}
+      placeholder="Что хотите посмотреть?"
       defaultValue={defaultValue}
-      enterButton={enterButton}
+      enterButton="Найти"
       suffix={suffix}
       size={size}
       onSearch={handleSearch}
@@ -31,18 +24,14 @@ const SearchInput = ({
 };
 
 SearchInput.defaultProps = {
-  placeholder: undefined,
   defaultValue: undefined,
-  enterButton: undefined,
   suffix: undefined,
   size: undefined,
   onSearch: undefined,
 };
 
 SearchInput.propTypes = {
-  placeholder: PropTypes.string,
   defaultValue: PropTypes.string,
-  enterButton: PropTypes.string.isRequired,
   suffix: PropTypes.elementType,
   size: PropTypes.string,
   onSearch: PropTypes.func.isRequired,
