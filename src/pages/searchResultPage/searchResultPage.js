@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { SearchResultLayout } from '../../layouts';
-import { SearchInput } from '../../components';
+import { SearchInput, VideoList } from '../../components';
 import { getYoutubeVideoList } from '../../store/searchResultPage/actions';
 import { Spin } from 'antd';
 import { HeartOutlined, LoadingOutlined } from '@ant-design/icons';
@@ -31,6 +31,14 @@ const SearchResultPage = () => {
 
   const youtubeVideoListLoading = useSelector(
     (state) => state.searchResultPageReducer.loading
+  );
+
+  const youtubeVideoList = useSelector(
+    (state) => state.searchResultPageReducer.youtubeVideoList
+  );
+
+  const videosAmountTotal = useSelector(
+    (state) => state.searchResultPageReducer.videosAmountTotal
   );
 
   const handleSearch = (searchText) => {
@@ -77,7 +85,11 @@ const SearchResultPage = () => {
             className="search-result-page__loading-spin"
           />
         ) : (
-          <div>VideoList</div>
+          <VideoList
+            query={searchQuery}
+            videosAmountTotal={videosAmountTotal}
+            videos={youtubeVideoList}
+          />
         )}
       </div>
     </SearchResultLayout>
