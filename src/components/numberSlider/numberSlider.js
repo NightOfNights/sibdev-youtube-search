@@ -12,7 +12,7 @@ const NumberSlider = ({ min, max, initialValue, onSliderValueChange }) => {
   };
 
   return (
-    <Row className="number-slider__wrapper-row">
+    <Row className="number-slider number-slider__wrapper-row">
       <Col span={20} className="number-slider__wrapper-slider-col">
         <Slider
           min={min}

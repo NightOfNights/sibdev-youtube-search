@@ -9,12 +9,14 @@
     font-weight: bold;
     margin: 10px 0;
   }
+}
 
-  &__form-item {
+.form {
+  &__item {
     margin: 0 0 10px;
   }
 
-  &__form-item > * {
+  &__item > * {
     padding: 0 !important;
   }
 

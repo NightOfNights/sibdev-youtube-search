@@ -34,10 +34,6 @@ const FavouriteModal = ({
 }) => {
   const [maxAmountInputValue, setMaxAmountInputValue] = useState(12);
 
-  const selectOptions = options.map((option) => (
-    <Option key={option.value}>{option.name}</Option>
-  ));
-
   const handleClickOk = (formData) => {
     const favouriteQuery = {
       ...formData,
@@ -59,6 +55,12 @@ const FavouriteModal = ({
     setMaxAmountInputValue(value);
   };
 
+  const selectOptions = options.map((option) => (
+    <Option key={option.value} className="form__select-option">
+      {option.name}
+    </Option>
+  ));
+
   return (
     <Modal
       visible={isModalVisible}
@@ -73,13 +75,14 @@ const FavouriteModal = ({
         {...formLayout}
         onFinish={handleClickOk}
         initialValues={{ query: searchQuery }}
+        className="favourite-modal__form form"
       >
-        <Form.Item
-          label="Запрос"
-          name="query"
-          className="favourite-modal__form-item"
-        >
-          <Input value={searchQuery} readOnly={editModal ? false : true} />
+        <Form.Item label="Запрос" name="query" className="form__item">
+          <Input
+            value={searchQuery}
+            readOnly={editModal ? false : true}
+            className="form__input"
+          />
         </Form.Item>
         <Form.Item
           label="Название"
@@ -90,34 +93,33 @@ const FavouriteModal = ({
               message: 'Название не должно быть пустым!',
             },
           ]}
-          className="favourite-modal__form-item"
+          className="form__item"
         >
-          <Input placeholder="Укажите название" />
+          <Input placeholder="Укажите название" className="form__input" />
         </Form.Item>
-        <Form.Item
-          label="Сортировать по"
-          name="sort-by"
-          className="favourite-modal__form-item"
-        >
-          <Select placeholder="По релевантности">{selectOptions}</Select>
+        <Form.Item label="Сортировать по" name="sort-by" className="form__item">
+          <Select placeholder="По релевантности" className="form__select">
+            {selectOptions}
+          </Select>
         </Form.Item>
         <Form.Item
           label="Максимальное количество"
           name="max-amount"
-          className="favourite-modal__form-item"
+          className="form__item"
         >
           <NumberSlider
             min={0}
             max={50}
             initialValue={12}
             onSliderValueChange={handleMaxAmountChange}
+            className="form__number-slider"
           />
         </Form.Item>
-        <div className="favourite-modal__footer">
-          <Button onClick={handleClickCancel}>
+        <div className="form__footer">
+          <Button onClick={handleClickCancel} className="form__submit-btn">
             {editModal ? 'Не изменять' : 'Не сохранять'}
           </Button>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className="form__cancel-btn">
             {editModal ? 'Изменить' : 'Сохранить'}
           </Button>
         </div>

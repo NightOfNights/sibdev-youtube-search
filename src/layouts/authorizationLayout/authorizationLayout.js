@@ -14,7 +14,7 @@ const AuthorizationLayout = ({ children }) => {
     <Row
       justify="center"
       align="middle"
-      className="authorization-layout__wrapper-row"
+      className="authorization-layout authorization-layout__wrapper-row"
     >
       <Col {...colSize} className="authorization-layout__wrapper-col">
         {children}

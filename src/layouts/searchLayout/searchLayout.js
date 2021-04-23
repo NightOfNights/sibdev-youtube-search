@@ -14,7 +14,7 @@ const SearchLayout = ({ children }) => {
       <Row
         justify="center"
         align="middle"
-        className="search-layout__wrapper-row"
+        className="search-layout search-layout__wrapper-row"
       >
         <Col {...colSize} className="search-layout__wrapper-col">
           {children}

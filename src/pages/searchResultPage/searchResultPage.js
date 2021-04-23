@@ -128,6 +128,7 @@ const SearchResultPage = () => {
             query={searchQuery}
             videosAmountTotal={videosAmountTotal}
             videos={youtubeVideoList}
+            className="search-result-page__video-list"
           />
         )}
         <FavouriteModal
@@ -135,6 +136,7 @@ const SearchResultPage = () => {
           handleClickOk={handleClickOk}
           handleClickCancel={handleClickCancel}
           searchQuery={searchQuery}
+          className="search-result-page__favourite-modal"
         />
       </div>
     </SearchResultLayout>

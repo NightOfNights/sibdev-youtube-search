@@ -14,11 +14,6 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
       ? { gutter: [16, 16], column: 1 }
       : { gutter: [16, 16], xs: 2, sm: 2, md: 3, lg: 4, xl: 5, xxl: 5 };
 
-  const itemClasses =
-    listLayout === 'list'
-      ? 'video-list__item video-list__list-item'
-      : 'video-list__item video-list__grid-item';
-
   const listIconClasses =
     listLayout === 'list'
       ? 'video-list__list-icon video-list__list-icon_active'
@@ -28,6 +23,9 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
     listLayout === 'grid'
       ? 'video-list__grid-icon video-list__grid-icon_active'
       : 'video-list__grid-icon video-list__grid-icon_inactive';
+
+  const videoWrapperClass =
+    listLayout === 'list' ? 'video__list-wrapper' : 'video__grid-wrapper';
 
   const handleListLayoutIconClick = () => {
     if (listLayout !== 'vertical') {
@@ -70,17 +68,15 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
         grid={itemsLayout}
         dataSource={videos}
         renderItem={(video) => (
-          <List.Item key={video.id.videoId}>
-            <div className={itemClasses}>
+          <List.Item key={video.id.videoId} className="video-list__video video">
+            <div className={videoWrapperClass}>
               <img
                 src={video.snippet.thumbnails.medium.url}
-                className="video-list__thumbnail"
+                className="video__thumbnail"
               />
-              <div className="video-list__text-content">
-                <span className="video-list__video-title">
-                  {video.snippet.title}
-                </span>
-                <span className="video-list__video-description">
+              <div className="video__text-content">
+                <span className="video__title">{video.snippet.title}</span>
+                <span className="video__description">
                   {video.snippet.channelTitle}
                 </span>
               </div>

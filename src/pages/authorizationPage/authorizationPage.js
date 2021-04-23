@@ -25,7 +25,10 @@ const AuthorizationPage = ({ onAuthorization }) => {
           className="authorization-page__logo"
         />
         <div className="authorization-page__header">Вход</div>
-        <AuthorizationForm onFormSubmit={handleFormSubmit} />
+        <AuthorizationForm
+          onFormSubmit={handleFormSubmit}
+          className="authorization-page__form"
+        />
       </div>
     </AuthorizationLayout>
   );
