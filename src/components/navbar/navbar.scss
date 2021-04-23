@@ -15,10 +15,12 @@
     cursor: pointer;
   }
 
-  &__item:hover {
-    color: var(--primary-color);
-    margin-bottom: -2px;
-    border-bottom: 2px solid var(--primary-color);
+  &__link {
+    &_active {
+      color: var(--primary-color);
+      margin-bottom: -2px;
+      border-bottom: 2px solid var(--primary-color);
+    }
   }
 
   &__item:last-child {

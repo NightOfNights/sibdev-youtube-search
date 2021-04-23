@@ -66,6 +66,7 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
       </div>
       <List
         grid={itemsLayout}
+        locale={{ emptyText: 'Нет видео по запросу' }}
         dataSource={videos}
         renderItem={(video) => (
           <List.Item key={video.id.videoId} className="video-list__video video">

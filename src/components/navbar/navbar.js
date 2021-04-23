@@ -5,6 +5,7 @@ import './navbar.scss';
 
 const Navbar = () => {
   const history = useHistory();
+  const currentPath = history.location.pathname;
 
   const handleLogoutClick = () => {
     console.log('log out');
@@ -12,13 +13,30 @@ const Navbar = () => {
     history.push('/auth');
   };
 
+  const activeLinkClasses = 'navbar__item navbar__link navbar__link_active';
+  const inactiveLinkClasses = 'navbar__item navbar__link';
+
   return (
     <div className="navbar">
       <img src={SibdevLogo} alt="Sibdev logo" className="navbar__logo" />
-      <Link to="/search" className="navbar__item">
+      <Link
+        to="/search"
+        className={
+          currentPath === '/search' || currentPath === '/search/result'
+            ? activeLinkClasses
+            : inactiveLinkClasses
+        }
+      >
         Поиск
       </Link>
-      <Link to="/search/favourites" className="navbar__item">
+      <Link
+        to="/search/favourites"
+        className={
+          currentPath === '/search/favourites'
+            ? activeLinkClasses
+            : inactiveLinkClasses
+        }
+      >
         Избранное
       </Link>
       <div className="navbar__item" onClick={handleLogoutClick}>

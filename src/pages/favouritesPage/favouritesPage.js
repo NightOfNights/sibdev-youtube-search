@@ -63,6 +63,7 @@ const FavouritesPage = () => {
         <div className="favourites-page__header">Избранное</div>
         <List
           className="favourites-page__favourite-queries-list"
+          locale={{ emptyText: 'Нет избранных запросов' }}
           dataSource={favourites}
           renderItem={(favouriteQuery) => {
             const queryName = favouriteQuery['query-name'];
