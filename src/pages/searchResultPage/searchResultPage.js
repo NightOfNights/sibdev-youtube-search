@@ -4,6 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { SearchResultLayout } from '../../layouts';
 import { SearchInput, VideoList, FavouriteModal } from '../../components';
 import { getYoutubeVideoList } from '../../store/searchResultPage/actions';
+import { addNewFavouriteQuery } from '../../utils/localStorage';
 import { Spin, Popover } from 'antd';
 import { HeartOutlined, LoadingOutlined } from '@ant-design/icons';
 import './searchResultPage.scss';
@@ -21,6 +22,7 @@ const SearchResultPage = () => {
   const searchParams = {
     part: 'snippet',
     type: 'video',
+    order: 'searchSortUnspecified',
     q: searchQuery,
     maxResults: 25,
     key: 'AIzaSyBwVN7mJY92b4pdKSwNNDfJbCBkJtrGQ-Q',
@@ -60,7 +62,8 @@ const SearchResultPage = () => {
     setIsModalVisible(true);
   };
 
-  const handleClickOk = () => {
+  const handleClickOk = (favouriteQuery) => {
+    addNewFavouriteQuery(favouriteQuery);
     setIsModalVisible(false);
     setIsPopoverVisible(true);
   };
