@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { AuthorizationLayout } from '../../layouts';
 import { AuthorizationForm } from '../../components';
 import SibdevLogo from '../../assets/sibdev-logo.svg';
+import PropTypes from 'prop-types';
 import './authorizationPage.scss';
 
 const AuthorizationPage = ({ onAuthorization }) => {
@@ -32,6 +33,14 @@ const AuthorizationPage = ({ onAuthorization }) => {
       </div>
     </AuthorizationLayout>
   );
+};
+
+AuthorizationPage.defaultProps = {
+  onAuthorization: undefined,
+};
+
+AuthorizationPage.propTypes = {
+  onAuthorization: PropTypes.func.isRequired,
 };
 
 export default AuthorizationPage;
