@@ -11,6 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 15px 20px;
+  cursor: pointer;
 
   &__actions {
     display: none;
@@ -34,5 +35,11 @@
 
   &__delete-action {
     color: var(--basic-red);
+  }
+
+  &__edit-action:hover,
+  &__delete-action:hover {
+    border-bottom: 1px solid;
+    margin-bottom: -1px;
   }
 }
