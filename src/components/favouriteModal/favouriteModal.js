@@ -41,11 +41,14 @@ const FavouriteModal = ({
   const handleClickOk = (formData) => {
     const favouriteQuery = {
       ...formData,
-      ...{ 'max-amount': maxAmountInputValue },
+      ...{
+        'max-amount': maxAmountInputValue,
+        'sort-by': undefined ? 'searchSortUnspecified' : formData['sort-by'],
+      },
     };
 
     console.log(favouriteQuery);
-    onClickOk();
+    onClickOk(favouriteQuery);
   };
 
   const handleClickCancel = () => {
@@ -76,7 +79,7 @@ const FavouriteModal = ({
           name="query"
           className="favourite-modal__form-item"
         >
-          <Input value={searchQuery} readOnly />
+          <Input value={searchQuery} readOnly={editModal ? false : true} />
         </Form.Item>
         <Form.Item
           label="Название"
