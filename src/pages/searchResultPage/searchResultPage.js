@@ -15,18 +15,10 @@ const SearchResultPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const searchQuery = Object.fromEntries(
+  const searchParams = Object.fromEntries(
     new URL(document.location).searchParams
-  ).query;
-
-  const searchParams = {
-    part: 'snippet',
-    type: 'video',
-    order: 'searchSortUnspecified',
-    q: searchQuery,
-    maxResults: 25,
-    key: 'AIzaSyBwVN7mJY92b4pdKSwNNDfJbCBkJtrGQ-Q',
-  };
+  );
+  const searchQuery = searchParams.query;
 
   useEffect(() => {
     console.log('render');

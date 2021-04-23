@@ -6,7 +6,7 @@ import './videoList.scss';
 
 const VideoList = ({ query, videosAmountTotal, videos }) => {
   const [listLayout, setListLayout] = useState(
-    localStorage.getItem('video-list-layout') || 'grid'
+    localStorage.getItem('video-list-layout') || 'list'
   );
 
   const itemsLayout =

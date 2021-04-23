@@ -31,6 +31,9 @@ const FavouriteModal = ({
   handleClickOk: onClickOk,
   handleClickCancel: onClickCancel,
   searchQuery,
+  queryName,
+  sortBy,
+  maxAmount,
 }) => {
   const [maxAmountInputValue, setMaxAmountInputValue] = useState(12);
 
@@ -39,12 +42,11 @@ const FavouriteModal = ({
       ...formData,
       ...{
         'max-amount': maxAmountInputValue,
-        'sort-by': undefined ? 'searchSortUnspecified' : formData['sort-by'],
+        'sort-by': undefined ? 'relevance' : formData['sort-by'],
       },
     };
-
     console.log(favouriteQuery);
-    onClickOk(favouriteQuery);
+    onClickOk(favouriteQuery, queryName);
   };
 
   const handleClickCancel = () => {
@@ -65,6 +67,7 @@ const FavouriteModal = ({
     <Modal
       visible={isModalVisible}
       onCancel={handleClickCancel}
+      destroyOnClose
       footer={null}
       className="favourite-modal"
     >
@@ -74,7 +77,11 @@ const FavouriteModal = ({
       <Form
         {...formLayout}
         onFinish={handleClickOk}
-        initialValues={{ query: searchQuery }}
+        initialValues={{
+          query: searchQuery,
+          'query-name': queryName,
+          'sort-by': sortBy,
+        }}
         className="favourite-modal__form form"
       >
         <Form.Item label="Запрос" name="query" className="form__item">
@@ -110,7 +117,7 @@ const FavouriteModal = ({
           <NumberSlider
             min={0}
             max={50}
-            initialValue={12}
+            initialValue={maxAmount}
             onSliderValueChange={handleMaxAmountChange}
             className="form__number-slider"
           />
@@ -132,6 +139,9 @@ FavouriteModal.defaultProps = {
   isModalVisible: false,
   editModal: false,
   searchQuery: 'minecraft',
+  queryName: undefined,
+  sortBy: undefined,
+  maxAmount: 12,
 };
 
 FavouriteModal.propTypes = {
@@ -140,6 +150,9 @@ FavouriteModal.propTypes = {
   handleClickOk: PropTypes.func.isRequired,
   handleClickCancel: PropTypes.func.isRequired,
   searchQuery: PropTypes.string.isRequired,
+  queryName: PropTypes.string,
+  sortBy: PropTypes.string,
+  maxAmount: PropTypes.number,
 };
 
 export default FavouriteModal;

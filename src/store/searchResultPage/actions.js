@@ -21,12 +21,21 @@ const getYoutubeVideoListFailed = (error) => ({
 });
 
 export const getYoutubeVideoList = (params) => {
+  const queryParams = {
+    part: 'snippet',
+    type: 'video',
+    order: params['sort-by'] || 'relevance',
+    q: params.query || '',
+    maxResults: params['max-amount'] || 12,
+    key: 'AIzaSyBwVN7mJY92b4pdKSwNNDfJbCBkJtrGQ-Q',
+  };
+
   return (dispatch) => {
-    if (params.q) {
+    if (queryParams.q) {
       dispatch(getYoutubeVideoListStarted());
 
       axios
-        .get('/v3/search', { params })
+        .get('/v3/search', { params: queryParams })
         .then((res) => {
           dispatch(getYoutubeVideoListSuccess(res.data));
         })

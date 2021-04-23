@@ -8,26 +8,39 @@ export const getCurrentUserFavouriteQueries = () => {
 export const addNewFavouriteQuery = (query) => {
   const { token, favouriteQueries } = getCurrentUserFavouriteQueries();
 
-  favouriteQueries.push(query);
-  localStorage.setItem(token, JSON.stringify(favouriteQueries));
+  if (favouriteQueries.length === 0) {
+    localStorage.setItem(token, JSON.stringify([query]));
+  } else {
+    favouriteQueries.push(query);
+    localStorage.setItem(token, JSON.stringify(favouriteQueries));
+  }
 
   console.log(query);
 };
 
-export const deleteFavouriteQuery = (idx) => {
+export const deleteFavouriteQuery = (queryName, callback) => {
   const { token, favouriteQueries } = getCurrentUserFavouriteQueries();
 
-  favouriteQueries.splice(idx, 1);
-  localStorage.setItem(token, JSON.stringify(favouriteQueries));
+  const modifiedFavouriteQueries = favouriteQueries.filter(
+    (favouriteQuery) => favouriteQuery['query-name'] !== queryName
+  );
+  localStorage.setItem(token, JSON.stringify(modifiedFavouriteQueries));
 
-  console.log(favouriteQueries);
+  callback(modifiedFavouriteQueries);
+  console.log(modifiedFavouriteQueries);
 };
 
-export const updateFavouriteQuery = (query, idx) => {
+export const updateFavouriteQuery = (editedQuery, queryName, callback) => {
   const { token, favouriteQueries } = getCurrentUserFavouriteQueries();
 
-  favouriteQueries[idx] = query;
-  localStorage.setItem(token, JSON.stringify(favouriteQueries));
+  favouriteQueries[
+    favouriteQueries.findIndex(
+      (favouriteQuery) => favouriteQuery['query-name'] === queryName
+    )
+  ] = editedQuery;
 
-  console.log(favouriteQueries);
+  const modifiedFavouriteQueries = favouriteQueries;
+
+  localStorage.setItem(token, JSON.stringify(modifiedFavouriteQueries));
+  callback(modifiedFavouriteQueries);
 };

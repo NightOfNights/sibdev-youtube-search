@@ -1,0 +1,38 @@
+.favourites-page {
+  &__header {
+    font-size: 1.75rem;
+    font-weight: normal;
+    margin: 40px 0;
+  }
+}
+
+.favourite-query {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 20px;
+
+  &__actions {
+    display: none;
+  }
+
+  &:hover &__actions {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__edit-action,
+  &__delete-action {
+    font-size: 0.875rem;
+    line-height: 10 / 7rem;
+    cursor: pointer;
+  }
+
+  &__edit-action {
+    color: var(--primary-color);
+  }
+
+  &__delete-action {
+    color: var(--basic-red);
+  }
+}
