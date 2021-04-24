@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './privateRoute';
 import SearchRouter from './searchRouter';
 import { AuthorizationPage } from '../pages';
-import users from '../data/users';
+import { userAuthorize } from '../utils/localStorage';
 
 const AppRouter = () => {
   const [userToken, setUserToken] = useState(
@@ -11,20 +11,7 @@ const AppRouter = () => {
   );
 
   const handleAuthorization = (formData, history, onFailedAuthorization) => {
-    const isUserExists = users.some(
-      (user) =>
-        user.username === formData.username &&
-        user.password === formData.password
-    );
-
-    if (isUserExists) {
-      const token = formData.username + formData.password;
-      localStorage.setItem('token', token);
-      setUserToken(token);
-      history.push('/search');
-    } else {
-      onFailedAuthorization();
-    }
+    userAuthorize(formData, history, setUserToken, onFailedAuthorization);
   };
 
   return (

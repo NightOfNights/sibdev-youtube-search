@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import SibdevLogo from '../../assets/sibdev-logo.svg';
+import { userLogout } from '../../utils/localStorage';
 import './navbar.scss';
 
 const Navbar = () => {
@@ -8,9 +9,7 @@ const Navbar = () => {
   const currentPath = history.location.pathname;
 
   const handleLogoutClick = () => {
-    console.log('log out');
-    localStorage.removeItem('token');
-    history.push('/auth');
+    userLogout(history);
   };
 
   const activeLinkClasses = 'navbar__item navbar__link navbar__link_active';

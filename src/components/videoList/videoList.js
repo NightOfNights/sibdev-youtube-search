@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 import './videoList.scss';
 
 const VideoList = ({ query, videosAmountTotal, videos }) => {
-  const [listLayout, setListLayout] = useState(
-    localStorage.getItem('video-list-layout') || 'list'
-  );
+  const [listLayout, setListLayout] = useState('list');
 
   const itemsLayout =
     listLayout === 'list'
@@ -30,14 +28,12 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
   const handleListLayoutIconClick = () => {
     if (listLayout !== 'vertical') {
       setListLayout('list');
-      localStorage.setItem('video-list-layout', 'list');
     }
   };
 
   const handleGridLayoutIconClick = () => {
     if (listLayout !== 'grid') {
       setListLayout('grid');
-      localStorage.setItem('video-list-layout', 'grid');
     }
   };
 
