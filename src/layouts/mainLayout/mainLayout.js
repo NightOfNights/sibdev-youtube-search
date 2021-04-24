@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import { Navbar } from '../../components';
 import './mainLayout.scss';
-//xs sm md lg xl xxl.
+
 const colSize = {
   xs: { span: 24 },
   sm: { span: 24 },

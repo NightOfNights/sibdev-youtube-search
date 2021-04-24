@@ -6,7 +6,8 @@ import './searchLayout.scss';
 const colSize = {
   xs: { span: 24 },
   sm: { span: 24 },
-  md: { span: 18 },
+  md: { span: 16 },
+  lg: { span: 16 },
 };
 
 const SearchLayout = ({ children }) => {
