@@ -71,17 +71,20 @@
     font-weight: bold;
   }
 
-  &__description {
+  &__channel-title,
+  &__view-count {
     color: var(--light-gray);
   }
 
-  &__list-wrapper &__description,
-  &__list-wrapper &__title {
+  &__list-wrapper &__channel-title,
+  &__list-wrapper &__title,
+  &__list-wrapper &__view-count {
     overflow-wrap: break-word;
   }
 
-  &__grid-wrapper &__description,
-  &__grid-wrapper &__title {
+  &__grid-wrapper &__channel-title,
+  &__grid-wrapper &__title,
+  &__list-wrapper &__view-count {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -90,6 +93,7 @@
   &__text-content {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     min-width: 0;
   }
 }

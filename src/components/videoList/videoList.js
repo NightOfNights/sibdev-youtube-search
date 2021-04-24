@@ -10,7 +10,7 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
   const itemsLayout =
     listLayout === 'list'
       ? { gutter: [16, 16], column: 1 }
-      : { gutter: [16, 16], xs: 2, sm: 2, md: 3, lg: 4, xl: 5, xxl: 5 };
+      : { gutter: [16, 16], xs: 2, sm: 3, md: 4, lg: 4, xl: 5, xxl: 5 };
 
   const listIconClasses =
     listLayout === 'list'
@@ -35,6 +35,20 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
     if (listLayout !== 'grid') {
       setListLayout('grid');
     }
+  };
+
+  const formattedViewCount = (viewCount) => {
+    console.log(viewCount);
+    if (viewCount < 1000) {
+      return `${viewCount} просмотров`;
+    }
+    if (viewCount < 1e6) {
+      return `${Math.floor(viewCount / 1e3)} тыс. просмотров`;
+    }
+    if (viewCount < 1e9) {
+      return `${parseFloat((viewCount / 1e6).toPrecision(2))} млн. просмотров`;
+    }
+    return `${parseFloat((viewCount / 1e9).toPrecision(2))} млрд. просмотров`;
   };
 
   const viewOverCount = '1000000+';
@@ -72,10 +86,15 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
                 className="video__thumbnail"
               />
               <div className="video__text-content">
-                <span className="video__title">{video.snippet.title}</span>
-                <span className="video__description">
-                  {video.snippet.channelTitle}
-                </span>
+                <div className="video__title">{video.snippet.title}</div>
+                <div>
+                  <div className="video__channel-title">
+                    {video.snippet.channelTitle}
+                  </div>
+                  <div className="video__view-count">
+                    {formattedViewCount(video.snippet.viewCount)}
+                  </div>
+                </div>
               </div>
             </div>
           </List.Item>

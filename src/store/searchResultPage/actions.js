@@ -27,17 +27,43 @@ export const getYoutubeVideoList = (params) => {
     order: params['sort-by'] || 'relevance',
     q: params.query || '',
     maxResults: params['max-amount'] || 12,
-    key: 'AIzaSyBwVN7mJY92b4pdKSwNNDfJbCBkJtrGQ-Q',
+    key: 'AIzaSyB0m7Fx82l0V9pJX9S1wvfCASaKkPPQLsw',
   };
 
-  return (dispatch) => {
+  return async (dispatch) => {
     if (queryParams.q) {
       dispatch(getYoutubeVideoListStarted());
 
       axios
         .get('/v3/search', { params: queryParams })
-        .then((res) => {
-          dispatch(getYoutubeVideoListSuccess(res.data));
+        .then((videoListData) => {
+          const videoList = videoListData.data.items;
+          const videosId = videoList.map((item) => item.id.videoId).join(',');
+
+          axios
+            .get('/v3/videos', {
+              params: {
+                part: 'statistics',
+                id: videosId,
+                key: queryParams.key,
+              },
+            })
+            .then((videoViewsCountData) => {
+              const videoViewsCount = videoViewsCountData.data.items;
+
+              videoList.forEach(
+                (videoItem, idx) =>
+                  (videoItem.snippet.viewCount =
+                    videoViewsCount[idx].statistics.viewCount)
+              );
+
+              videoListData.items = videoList;
+
+              dispatch(getYoutubeVideoListSuccess(videoListData.data));
+            })
+            .catch((err) => {
+              dispatch(getYoutubeVideoListFailed(err.message));
+            });
         })
         .catch((err) => {
           dispatch(getYoutubeVideoListFailed(err.message));
