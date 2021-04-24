@@ -11,7 +11,17 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 15px 20px;
+  background-color: var(--basic-white);
+  border-bottom: 1px solid var(--favourite-query);
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--favourite-query);
+  }
+
+  &__name {
+    border-bottom: 1px solid transparent;
+  }
 
   &__actions {
     display: none;
@@ -27,6 +37,7 @@
     font-size: 0.875rem;
     line-height: 10 / 7rem;
     cursor: pointer;
+    border-bottom: 1px solid transparent;
   }
 
   &__edit-action {
@@ -40,7 +51,14 @@
   &__edit-action:hover,
   &__delete-action:hover {
     padding-bottom: 2px;
-    border-bottom: 1px solid;
-    margin-bottom: -1px;
+    padding-bottom: 0;
+  }
+
+  &__edit-action:hover {
+    border-bottom-color: var(--primary-color);
+  }
+
+  &__delete-action:hover {
+    border-bottom-color: var(--basic-red);
   }
 }

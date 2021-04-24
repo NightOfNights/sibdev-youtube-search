@@ -1,5 +1,9 @@
 .authorization-layout {
-  &__wrapper-row {
-    height: 90vh;
+  height: 90vh;
+
+  &__wrapper {
+    padding: 3vh 3vw;
+    border: 1px solid var(--authorization-border);
+    border-radius: 5px;
   }
 }

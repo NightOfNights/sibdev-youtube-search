@@ -4,19 +4,15 @@ import './authorizationLayout.scss';
 
 const colSize = {
   xs: { span: 24 },
-  sm: { span: 16 },
+  sm: { span: 24 },
   md: { span: 10 },
   lg: { span: 6 },
 };
 
 const AuthorizationLayout = ({ children }) => {
   return (
-    <Row
-      justify="center"
-      align="middle"
-      className="authorization-layout authorization-layout__wrapper-row"
-    >
-      <Col {...colSize} className="authorization-layout__wrapper-col">
+    <Row justify="center" align="middle" className="authorization-layout">
+      <Col {...colSize} className="authorization-layout__wrapper">
         {children}
       </Col>
     </Row>

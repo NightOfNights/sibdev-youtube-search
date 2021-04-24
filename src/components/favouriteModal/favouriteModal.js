@@ -87,7 +87,7 @@ const FavouriteModal = ({
         <Form.Item label="Запрос" name="query" className="form__item">
           <Input
             value={searchQuery}
-            readOnly={editModal ? false : true}
+            disabled={editModal ? false : true}
             className="form__input"
           />
         </Form.Item>

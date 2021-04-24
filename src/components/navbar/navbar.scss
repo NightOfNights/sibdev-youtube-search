@@ -16,10 +16,13 @@
   }
 
   &__link {
+    border-bottom: 2px solid transparent;
+  }
+
+  &__link {
     &_active {
       color: var(--primary-color);
-      margin-bottom: -2px;
-      border-bottom: 2px solid var(--primary-color);
+      border-bottom-color: var(--primary-color);
     }
   }
 

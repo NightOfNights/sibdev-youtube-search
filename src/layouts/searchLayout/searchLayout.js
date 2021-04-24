@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import './searchLayout.scss';
 
 const colSize = {
+  xs: { span: 24 },
   sm: { span: 24 },
   md: { span: 18 },
 };
@@ -11,12 +12,8 @@ const colSize = {
 const SearchLayout = ({ children }) => {
   return (
     <MainLayout>
-      <Row
-        justify="center"
-        align="middle"
-        className="search-layout search-layout__wrapper-row"
-      >
-        <Col {...colSize} className="search-layout__wrapper-col">
+      <Row justify="center" align="middle" className="search-layout">
+        <Col {...colSize} className="search-layout__wrapper">
           {children}
         </Col>
       </Row>
