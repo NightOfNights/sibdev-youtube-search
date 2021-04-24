@@ -3,8 +3,8 @@ import { Col, Row } from 'antd';
 import { Navbar } from '../../components';
 
 const colSize = {
-  xs: { span: 24 },
-  sm: { span: 16 },
+  lg: { span: 24 },
+  xl: { span: 16 },
 };
 
 const MainLayout = ({ children }) => {
