@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/sibdev-youtube-search/static/css/main.db3cbb62.chunk.css",
+    "main.css": "/sibdev-youtube-search/static/css/main.b01925c4.chunk.css",
     "main.js": "/sibdev-youtube-search/static/js/main.a8d64c5c.chunk.js",
     "main.js.map": "/sibdev-youtube-search/static/js/main.a8d64c5c.chunk.js.map",
     "runtime-main.js": "/sibdev-youtube-search/static/js/runtime-main.f73eadc2.js",
@@ -10,7 +10,7 @@
     "static/js/2.6cffc689.chunk.js.map": "/sibdev-youtube-search/static/js/2.6cffc689.chunk.js.map",
     "index.html": "/sibdev-youtube-search/index.html",
     "static/css/2.c51d807b.chunk.css.map": "/sibdev-youtube-search/static/css/2.c51d807b.chunk.css.map",
-    "static/css/main.db3cbb62.chunk.css.map": "/sibdev-youtube-search/static/css/main.db3cbb62.chunk.css.map",
+    "static/css/main.b01925c4.chunk.css.map": "/sibdev-youtube-search/static/css/main.b01925c4.chunk.css.map",
     "static/js/2.6cffc689.chunk.js.LICENSE.txt": "/sibdev-youtube-search/static/js/2.6cffc689.chunk.js.LICENSE.txt",
     "static/media/sibdev-logo.9e07718b.svg": "/sibdev-youtube-search/static/media/sibdev-logo.9e07718b.svg"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.f73eadc2.js",
     "static/css/2.c51d807b.chunk.css",
     "static/js/2.6cffc689.chunk.js",
-    "static/css/main.db3cbb62.chunk.css",
+    "static/css/main.b01925c4.chunk.css",
     "static/js/main.a8d64c5c.chunk.js"
   ]
 }
