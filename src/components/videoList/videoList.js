@@ -10,7 +10,7 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
   const itemsLayout =
     listLayout === 'list'
       ? { gutter: [16, 16], column: 1 }
-      : { gutter: [16, 16], xs: 2, sm: 3, md: 4, lg: 4, xl: 5, xxl: 5 };
+      : { gutter: [20, 20], xs: 2, sm: 3, md: 4, lg: 4, xl: 5, xxl: 5 };
 
   const listIconClasses =
     listLayout === 'list'

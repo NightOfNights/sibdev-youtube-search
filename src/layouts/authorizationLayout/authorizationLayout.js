@@ -6,7 +6,7 @@ const colSize = {
   xs: { span: 24 },
   sm: { span: 24 },
   md: { span: 10 },
-  lg: { span: 6 },
+  lg: { span: 8 },
 };
 
 const AuthorizationLayout = ({ children }) => {
