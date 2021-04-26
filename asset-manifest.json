@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/sibdev-youtube-search/static/css/main.b01925c4.chunk.css",
-    "main.js": "/sibdev-youtube-search/static/js/main.9a6ff1c6.chunk.js",
-    "main.js.map": "/sibdev-youtube-search/static/js/main.9a6ff1c6.chunk.js.map",
+    "main.js": "/sibdev-youtube-search/static/js/main.c78921c0.chunk.js",
+    "main.js.map": "/sibdev-youtube-search/static/js/main.c78921c0.chunk.js.map",
     "runtime-main.js": "/sibdev-youtube-search/static/js/runtime-main.f73eadc2.js",
     "runtime-main.js.map": "/sibdev-youtube-search/static/js/runtime-main.f73eadc2.js.map",
     "static/css/2.c51d807b.chunk.css": "/sibdev-youtube-search/static/css/2.c51d807b.chunk.css",
-    "static/js/2.6cffc689.chunk.js": "/sibdev-youtube-search/static/js/2.6cffc689.chunk.js",
-    "static/js/2.6cffc689.chunk.js.map": "/sibdev-youtube-search/static/js/2.6cffc689.chunk.js.map",
+    "static/js/2.b255b0fd.chunk.js": "/sibdev-youtube-search/static/js/2.b255b0fd.chunk.js",
+    "static/js/2.b255b0fd.chunk.js.map": "/sibdev-youtube-search/static/js/2.b255b0fd.chunk.js.map",
     "index.html": "/sibdev-youtube-search/index.html",
     "static/css/2.c51d807b.chunk.css.map": "/sibdev-youtube-search/static/css/2.c51d807b.chunk.css.map",
     "static/css/main.b01925c4.chunk.css.map": "/sibdev-youtube-search/static/css/main.b01925c4.chunk.css.map",
-    "static/js/2.6cffc689.chunk.js.LICENSE.txt": "/sibdev-youtube-search/static/js/2.6cffc689.chunk.js.LICENSE.txt",
+    "static/js/2.b255b0fd.chunk.js.LICENSE.txt": "/sibdev-youtube-search/static/js/2.b255b0fd.chunk.js.LICENSE.txt",
     "static/media/sibdev-logo.9e07718b.svg": "/sibdev-youtube-search/static/media/sibdev-logo.9e07718b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.f73eadc2.js",
     "static/css/2.c51d807b.chunk.css",
-    "static/js/2.6cffc689.chunk.js",
+    "static/js/2.b255b0fd.chunk.js",
     "static/css/main.b01925c4.chunk.css",
-    "static/js/main.9a6ff1c6.chunk.js"
+    "static/js/main.c78921c0.chunk.js"
   ]
 }
