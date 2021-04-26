@@ -20,30 +20,22 @@ export const addNewFavouriteQuery = (query) => {
   console.log(query);
 };
 
-export const deleteFavouriteQuery = (queryName, updateStateCallback) => {
+export const deleteFavouriteQuery = (idx, updateStateCallback) => {
   const { token, favouriteQueries } = getCurrentUserFavouriteQueries();
 
-  const modifiedFavouriteQueries = favouriteQueries.filter(
-    (favouriteQuery) => favouriteQuery['query-name'] !== queryName
-  );
+  favouriteQueries.splice(idx, 1);
+  const modifiedFavouriteQueries = favouriteQueries;
+
   localStorage.setItem(token, JSON.stringify(modifiedFavouriteQueries));
 
   updateStateCallback(modifiedFavouriteQueries);
   console.log(modifiedFavouriteQueries);
 };
 
-export const updateFavouriteQuery = (
-  editedQuery,
-  queryName,
-  updateStateCallback
-) => {
+export const updateFavouriteQuery = (editedQuery, idx, updateStateCallback) => {
   const { token, favouriteQueries } = getCurrentUserFavouriteQueries();
 
-  favouriteQueries[
-    favouriteQueries.findIndex(
-      (favouriteQuery) => favouriteQuery['query-name'] === queryName
-    )
-  ] = editedQuery;
+  favouriteQueries[idx] = editedQuery;
 
   const modifiedFavouriteQueries = favouriteQueries;
 

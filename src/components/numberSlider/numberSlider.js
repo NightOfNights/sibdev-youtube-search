@@ -37,8 +37,7 @@ const NumberSlider = ({ min, max, initialValue, onSliderValueChange }) => {
 
 NumberSlider.defaultProps = {
   min: 0,
-  max: 0,
-  initialValue: 12,
+  max: 1,
   onSliderValueChange: undefined,
 };
 

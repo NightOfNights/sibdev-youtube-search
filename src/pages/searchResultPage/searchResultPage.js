@@ -128,6 +128,7 @@ const SearchResultPage = () => {
           handleClickOk={handleClickOk}
           handleClickCancel={handleClickCancel}
           searchQuery={searchQuery}
+          maxAmount={12}
           className="search-result-page__favourite-modal"
         />
       </div>

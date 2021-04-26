@@ -35,16 +35,22 @@ const FavouriteModal = ({
   sortBy,
   maxAmount,
 }) => {
-  const [maxAmountInputValue, setMaxAmountInputValue] = useState(12);
+  const [maxAmountInputValue, setMaxAmountInputValue] = useState(maxAmount);
+
+  console.log(maxAmount);
 
   const handleClickOk = (formData) => {
     const favouriteQuery = {
       ...formData,
-      ...{
-        'max-amount': maxAmountInputValue,
-        'sort-by': undefined ? 'relevance' : formData['sort-by'],
-      },
+      'max-amount':
+        maxAmountInputValue !== undefined
+          ? maxAmountInputValue
+          : maxAmount !== undefined
+          ? maxAmount
+          : 12,
+      'sort-by': formData['sort-by'] ? formData['sort-by'] : 'relevance',
     };
+    console.log(maxAmountInputValue);
     console.log(favouriteQuery);
     onClickOk(favouriteQuery, queryName);
   };
@@ -141,7 +147,6 @@ FavouriteModal.defaultProps = {
   searchQuery: 'minecraft',
   queryName: undefined,
   sortBy: undefined,
-  maxAmount: 12,
 };
 
 FavouriteModal.propTypes = {

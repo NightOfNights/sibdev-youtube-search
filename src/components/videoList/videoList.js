@@ -38,7 +38,6 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
   };
 
   const formattedViewCount = (viewCount) => {
-    console.log(viewCount);
     if (viewCount < 1000) {
       return `${viewCount} просмотров`;
     }
@@ -79,7 +78,7 @@ const VideoList = ({ query, videosAmountTotal, videos }) => {
         locale={{ emptyText: 'Нет видео по запросу' }}
         dataSource={videos}
         renderItem={(video) => (
-          <List.Item key={video.id.videoId} className="video-list__video video">
+          <List.Item className="video-list__video video">
             <div className={videoWrapperClass}>
               <img
                 src={video.snippet.thumbnails.medium.url}

@@ -15,13 +15,14 @@ const FavouritesPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [favourites, setFavourites] = useState(favouriteQueries || []);
   const [modalData, setModalData] = useState({});
+  const [currentQueryIndex, setCurrentQueryIndex] = useState(0);
   const history = useHistory();
 
   const updateFavourites = (modifiedFavourites) => {
     setFavourites(modifiedFavourites);
   };
 
-  const handleEditClick = (e, favouriteQuery) => {
+  const handleEditClick = (e, favouriteQuery, idx) => {
     e.stopPropagation();
     setModalData({
       searchQuery: favouriteQuery.query,
@@ -29,17 +30,22 @@ const FavouritesPage = () => {
       sortBy: favouriteQuery['sort-by'],
       maxAmount: favouriteQuery['max-amount'],
     });
+    setCurrentQueryIndex(idx);
     setIsModalVisible(true);
   };
 
-  const handleDeleteButtonClick = (e, queryName) => {
+  const handleDeleteButtonClick = (e, idx) => {
     e.stopPropagation();
-    deleteFavouriteQuery(queryName, updateFavourites);
+    deleteFavouriteQuery(idx, updateFavourites);
   };
 
-  const handleClickOk = (modifiedfavouriteQuery, queryName) => {
+  const handleClickOk = (modifiedfavouriteQuery) => {
     setIsModalVisible(false);
-    updateFavouriteQuery(modifiedfavouriteQuery, queryName, updateFavourites);
+    updateFavouriteQuery(
+      modifiedfavouriteQuery,
+      currentQueryIndex,
+      updateFavourites
+    );
   };
 
   const handleClickCancel = () => {
@@ -50,7 +56,7 @@ const FavouritesPage = () => {
     const params = new URLSearchParams();
     params.append('query', query);
     if (sortBy) params.append('sort-by', sortBy);
-    if (maxAmount) params.append('max-amount', maxAmount);
+    if (maxAmount || maxAmount === 0) params.append('max-amount', maxAmount);
     history.push({
       pathname: '/search/result',
       search: params.toString(),
@@ -65,12 +71,11 @@ const FavouritesPage = () => {
           className="favourites-page__favourite-queries-list"
           locale={{ emptyText: 'Нет избранных запросов' }}
           dataSource={favourites}
-          renderItem={(favouriteQuery) => {
+          renderItem={(favouriteQuery, idx) => {
             const queryName = favouriteQuery['query-name'];
 
             return (
               <div
-                key={favouriteQuery['query-name'] + favouriteQuery.query}
                 className="favourite-query"
                 onClick={() =>
                   handleFavouriteQueryClick(
@@ -84,13 +89,13 @@ const FavouritesPage = () => {
                 <div className="favourite-query__actions">
                   <div
                     className="favourite-query__edit-action"
-                    onClick={(e) => handleEditClick(e, favouriteQuery)}
+                    onClick={(e) => handleEditClick(e, favouriteQuery, idx)}
                   >
                     Изменить
                   </div>
                   <div
                     className="favourite-query__delete-action"
-                    onClick={(e) => handleDeleteButtonClick(e, queryName)}
+                    onClick={(e) => handleDeleteButtonClick(e, idx)}
                   >
                     Удалить
                   </div>
