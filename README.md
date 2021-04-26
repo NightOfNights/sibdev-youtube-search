@@ -6,6 +6,8 @@
 
 Запросы хранятся в localStorage по токену.
 
+Если поиск не работает, то значит превышена квота по запросам в день.
+
 Ссылка на GitHub Pages: https://nightofnights.github.io/sibdev-youtube-search.
 
 ## Инструкция по запуску
