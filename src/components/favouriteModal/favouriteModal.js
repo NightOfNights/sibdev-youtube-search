@@ -35,19 +35,20 @@ const FavouriteModal = ({
   sortBy,
   maxAmount,
 }) => {
-  const [maxAmountInputValue, setMaxAmountInputValue] = useState(maxAmount);
+  const [maxAmountInputValue, setMaxAmountInputValue] = useState(
+    maxAmount || 12
+  );
+
+  React.useEffect(() => {
+    setMaxAmountInputValue(maxAmount);
+  }, [maxAmount]);
 
   console.log(maxAmount);
 
   const handleClickOk = (formData) => {
     const favouriteQuery = {
       ...formData,
-      'max-amount':
-        maxAmountInputValue !== undefined
-          ? maxAmountInputValue
-          : maxAmount !== undefined
-          ? maxAmount
-          : 12,
+      'max-amount': maxAmountInputValue,
       'sort-by': formData['sort-by'] ? formData['sort-by'] : 'relevance',
     };
     console.log(maxAmountInputValue);
